@@ -52,6 +52,12 @@ class SignatureFormatter extends Formatter
             (new \Flarum\BBCode\Configure())($configurator);
         }
 
+        $configurator->tags->get("URL")->template =
+            '<a href="{@url}" rel="{@rel}" target="_blank">
+    <xsl:copy-of select="@rel|@title"/>
+    <xsl:apply-templates/>
+</a>';
+
         return $configurator;
     }
 
